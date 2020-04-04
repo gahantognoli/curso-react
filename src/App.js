@@ -7,53 +7,43 @@ import 'materialize-css/dist/css/materialize.min.css';
 import Tabela from './Tabela';
 import Form from './Formulario';
 import Header from './Header';
+import ApiService from './ApiService';
 
 class App extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      autores: [
-        {
-          nome: 'Paulo',
-          livro: 'React',
-          preco: '1000'
-        },
-        {
-          nome: 'Daniel',
-          livro: 'Java',
-          preco: '99'
-        },
-        {
-          nome: 'Marcos',
-          livro: 'Design',
-          preco: '150'
-        },
-        {
-          nome: 'Bruno',
-          livro: 'DevOps',
-          preco: '100'
-        }
-      ]
+      autores: []
     }
-
-    //this.removeAutor = this.removeAutor.bind(this);
   }
 
-  removeAutor = index => {
+  componentDidMount(){
+    ApiService.ListaAutores()
+      .then(res => {
+        this.setState({autores: [...this.state.autores, ...res.data]});
+      });
+  }
+
+  removeAutor = id => {
     this.setState(({ autores }) => {
       return {
         autores: autores.filter((autor, posAtual) => {
-          return posAtual !== index;
+          return autor.id !== id;
         })
       }
     });
     PopUp.exibeMensagem('error', 'Autor removido com sucesso');
+    ApiService.RemoveAutor(id);
   }
 
   adicionaAutor = autor => {
-    this.setState({ autores: [...this.state.autores, autor] });
-    PopUp.exibeMensagem('success', 'Autor adicionado com sucesso');
+    ApiService.CriaAutor(autor)
+      .then(res => res.data)
+      .then(autor => {
+        this.setState({ autores: [...this.state.autores, autor] });
+        PopUp.exibeMensagem('success', 'Autor adicionado com sucesso');
+      });
   }
 
   render() {

@@ -5,7 +5,7 @@ const PopUp = {
         if (status === 'success') {
             M.toast({
                 html: mensagem,
-                calsses: 'green',
+                classes: 'green',
                 displayLength: 2000
             });
         }
@@ -13,7 +13,7 @@ const PopUp = {
         if (status === 'error') {
             M.toast({
                 html: mensagem,
-                calsses: 'red',
+                classes: 'red',
                 displayLength: 2000
             });
         }
