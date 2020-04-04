@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import PopUp from './PopUp';
 
 import './App.css'
 import 'materialize-css/dist/css/materialize.min.css';
@@ -47,16 +48,19 @@ class App extends Component {
         })
       }
     });
+    PopUp.exibeMensagem('error', 'Autor removido com sucesso');
   }
 
   adicionaAutor = autor => {
-    this.setState({ autores: [...this.state.autores, autor] })
+    this.setState({ autores: [...this.state.autores, autor] });
+    PopUp.exibeMensagem('success', 'Autor adicionado com sucesso');
   }
 
   render() {
     return (
       <Fragment>
         <Header />
+        <h1>Caso do Código</h1>
         <div className="container mb-10">
           <Tabela autores={this.state.autores} removeAutor={this.removeAutor} />
           <Form adicionarAutor={this.adicionaAutor} />
@@ -64,7 +68,6 @@ class App extends Component {
       </Fragment>
     );
   }
-
 }
 
 export default App;

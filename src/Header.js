@@ -1,14 +1,21 @@
 import React from 'react';
+import LinkWrapper from './LinkWrapper';
 
 export default function Header() {
     return (
         <nav>
-            <div class="nav-wrapper indigo lighten-2">
-                <a href="/" class="brand-logo">Casa do Código</a>
-                <ul id="nav-mobile" class="right">
-                    <li><a href="/autores">Autores</a></li>
-                    <li><a href="/livros">Livros</a></li>
-                    <li><a href="/sobre">Sobre</a></li>
+            <div className="nav-wrapper indigo lighten-2">
+                <LinkWrapper to="/" className="brand-logo" activeStyle={{}}>Casa do Código</LinkWrapper>
+                <ul id="nav-mobile" className="right">
+                    <li>
+                        <LinkWrapper to="/autores">Autores</LinkWrapper>
+                    </li>
+                    <li>
+                        <LinkWrapper to="/livros">Livros</LinkWrapper>
+                    </li>
+                    <li>
+                        <LinkWrapper to="/sobre">Sobre</LinkWrapper>
+                    </li>
                 </ul>
             </div>
         </nav>
