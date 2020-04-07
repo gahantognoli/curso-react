@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import FormValidator from './FormValidator';
-import PopUp from './PopUp';
+import FormValidator from '../../utils/FormValidator';
+import PopUp from '../../utils/PopUp';
 
 class Formulario extends Component {
 
@@ -101,7 +101,7 @@ class Formulario extends Component {
                 </div>
                 <button
                     onClick={this.submitFormulario}
-                    className="waves-effect waves-light indigo lighten-2 btn"
+                    className="waves-effect waves-light indigo lighten-2 btn btn-salvar"
                     type="button">Salvar</button>
             </form>
         );

@@ -1,7 +1,8 @@
 import React, { Fragment, Component } from 'react';
-import Header from './Header';
-import ApiService from './ApiService';
-import Lista from './Lista';
+import Header from '../../components/Cabecalho';
+import ApiService from '../../utils/ApiService';
+import Lista from '../../components/Lista';
+import PopUp from '../../utils/PopUp';
 
 class Autores extends Component {
 
@@ -12,13 +13,16 @@ class Autores extends Component {
         }
     }
 
-    componentDidMount(){
+    componentDidMount() {
         ApiService.ListaNomes()
             .then(res => {
-                this.setState({
-                    nomes: [...this.state.nomes, ...res.data]
-                });
-            });
+                if (res.message === 'success') {
+                    this.setState({
+                        nomes: [...this.state.nomes, ...res.data]
+                    });
+                }
+            })
+            .catch(err => PopUp.exibeMensagem('error', ' Erro na comunicação com a API ao tentar listar autores!'));
     }
 
     render() {

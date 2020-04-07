@@ -1,7 +1,7 @@
 import React from 'react';
-import LinkWrapper from './LinkWrapper';
+import LinkWrapper from '../../utils/LinkWrapper';
 
-export default function Header() {
+export default function Cabecalho() {
     return (
         <nav>
             <div className="nav-wrapper indigo lighten-2">

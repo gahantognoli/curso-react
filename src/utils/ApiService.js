@@ -30,6 +30,12 @@ const ApiService = {
                 'content-type': 'application/json'
             }
         })
+        .then(res => res.json())
+    },
+    TrataErros: res => {
+        if (!res.ok)
+            throw new Error(res.responseText);
+        return res;
     }
 }
 
