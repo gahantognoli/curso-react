@@ -5,7 +5,7 @@ export default function Cabecalho() {
     return (
         <nav>
             <div className="nav-wrapper indigo lighten-2">
-                <LinkWrapper to="/" className="brand-logo" activeStyle={{}}>Casa do Código</LinkWrapper>
+                <LinkWrapper to="/" className="brand-logo" activeStyle={{}}>Livraria</LinkWrapper>
                 <ul id="nav-mobile" className="right">
                     <li>
                         <LinkWrapper to="/autores">Autores</LinkWrapper>

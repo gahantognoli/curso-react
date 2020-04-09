@@ -21,7 +21,7 @@ class App extends Component {
   componentDidMount() {
     ApiService.ListaAutores()
       .then(res => {
-        if(res.message === 'success')
+        if (res.message === 'success')
           this.setState({ autores: [...this.state.autores, ...res.data] });
       })
       .catch(err => PopUp.exibeMensagem('error', ' Erro na comunicação com a API ao tentar listar autores!'));
@@ -56,13 +56,18 @@ class App extends Component {
   }
 
   render() {
+    const campos = [
+      { titulo: 'Autores', dado: 'nome' },
+      { titulo: 'Livros', dado: 'livro' },
+      { titulo: 'Preços', dado: 'preco' }
+    ]
     return (
       <Fragment>
         <Header />
-        <h1>Caso do Código</h1>
         <div className="container mb-10">
-          <Tabela autores={this.state.autores} removeAutor={this.removeAutor} />
+          <h1>Livraria</h1>
           <Form adicionarAutor={this.adicionaAutor} />
+          <Tabela campos={campos} dados={this.state.autores} removeDados={this.removeAutor} />
         </div>
       </Fragment>
     );

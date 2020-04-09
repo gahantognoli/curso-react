@@ -1,15 +1,22 @@
 import React from 'react';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 
 function Lista(props) {
     const { dados, chave } = props;
     return (
-        <div className="container mb-10">
-            <ul className="collection">
+        <List component="nav">
+            <ul>
                 {
-                    dados.map(item => <li key={item.id} className="collection-item">{item[chave]}</li>)
+                    dados.map(item => (
+                        <ListItem key={item.id}>
+                            <ListItemText primary={item[chave]} />
+                        </ListItem>)
+                    )
                 }
             </ul>
-        </div>
+        </List>
     )
 }
 

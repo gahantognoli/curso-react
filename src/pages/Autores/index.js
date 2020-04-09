@@ -1,7 +1,7 @@
 import React, { Fragment, Component } from 'react';
 import Header from '../../components/Cabecalho';
 import ApiService from '../../utils/ApiService';
-import Lista from '../../components/Lista';
+import Tabela from '../../components/Tabela';
 import PopUp from '../../utils/PopUp';
 
 class Autores extends Component {
@@ -26,12 +26,15 @@ class Autores extends Component {
     }
 
     render() {
-        const { nomes } = this.state;
+        const { nomes } = this.state,
+            campos = [{ titulo: 'Autores', dado: 'nome' }];
         return (
             <Fragment>
                 <Header />
-                <h1>Página de Autores</h1>
-                <Lista dados={nomes} chave="nome" />
+                <div className="container">
+                    <h1>Página de Autores</h1>
+                    <Tabela dados={nomes} campos={campos} />
+                </div>
             </Fragment>
         );
     }
